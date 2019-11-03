@@ -45,8 +45,10 @@ export class BackgroundForever extends EventEmitter {
                 this.running = false;
             }
         };
+        run();
     }
     public stop(): Promise<void> {
+        this.continue = false;
         return new Promise<void>((resolve, reject) => {
             const maxMsWait = this.options.stopSignalWaitToleranceMilliseconds;
             const pollMs = this.options.stopSignalPollFrequencyMilliseconds;
