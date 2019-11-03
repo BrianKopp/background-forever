@@ -1,6 +1,6 @@
 {
   "name": "background-forever",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple library to run a task in the background forever",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
