@@ -8,23 +8,52 @@ A simple utility to help you run node functions forever.
 npm install --save background-forever
 ```
 
+```js
+const BackgroundForever = new require('background-forever').BackgroundForever;
+const bf = new BackgroundForever(() => {
+    return new Promise((resolve, reject) => {
+        console.log('hello world!');
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    });
+});
+
+bf.start();
+
+setTimeout(() => {
+    bf.stop().then(() => {
+        console.log('stopped successfully!');
+    }).catch((e) => {
+        console.error('error occurred while stopping the function', e);
+    });
+}, 5000);
+
+```
+
+Using typescript:
+
 ```ts
 import { BackgroundForever } from 'background-forever';
 
 const bf = new BackgroundForever(() => {
     return new Promise<void>((resolve, reject) => {
         console.log('hello world!');
-        resolve();
+        setTimeout(() => {
+            resolve();
+        }, 1000);
     });
 });
 
 bf.start();
 
-bf.stop().then(() => {
-    console.log('stopped successfully!');
-}).catch((e) => {
-    console.error('error occurred while stopping the function', e);
-});
+setTimeout(() => {
+    bf.stop().then(() => {
+        console.log('stopped successfully!');
+    }).catch((e) => {
+        console.error('error occurred while stopping the function', e);
+    });
+}, 5000);
 ```
 
 ## Events
