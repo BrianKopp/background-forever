@@ -17,7 +17,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint-fix": "tslint -c tslint.json -p tsconfig.json --fix",
     "prepare": "npm run build",
-    "test": "mocha './test/**/*.spec.js' --require ts-node/register"
+    "test": "mocha './test/**/*.spec.ts' --require ts-node/register"
   },
   "files": [
     "lib/**/*"
@@ -33,7 +33,11 @@
   },
   "homepage": "https://github.com/briankopp/background-forever#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.4",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.5",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4"
