@@ -23,7 +23,13 @@ bf.on('runError', (e) => {
 bf.start();
 
 setTimeout(() => {
-    bf.stop();
+    bf.stop().then(() => {
+        console.log('successfully stopped my function!');
+        process.exit(0);
+    }).catch((e) => {
+        console.error('failed to stop my function', e);
+        process.exit(1);
+    });
 }, 5000);
 
 /*
@@ -43,4 +49,5 @@ finished my function
 preparing to start run #5
 hello world!
 finished my function
+successfully stopped my function!
 */
