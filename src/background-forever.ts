@@ -1,5 +1,5 @@
-import { BackgroundForeverOptions } from './background-forever-options';
 import { EventEmitter } from 'events';
+import { BackgroundForeverOptions } from './background-forever-options';
 
 export class BackgroundForever extends EventEmitter {
     private options: BackgroundForeverOptions;
