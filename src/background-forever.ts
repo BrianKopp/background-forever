@@ -28,15 +28,17 @@ export class BackgroundForever extends EventEmitter {
     public start(): void {
         this.continue = true;
         const bf = this;
+        let runCount = 1;
         const run = () => {
             if (bf.continue) {
                 bf.running = true;
-                bf.emit('beforeRun');
+                bf.emit('beforeRun', runCount);
                 bf.foreverFunction().then((res) => {
                     bf.emit('runSuccess', res);
                 }).catch((e) => {
                     bf.emit('runError', e);
                 }).finally(() => {
+                    runCount = runCount + 1;
                     setTimeout(run, bf.options.delayBetweenExecutionsMilliseconds);
                 });
             } else {
